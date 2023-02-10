@@ -6,3 +6,7 @@
 *.synctex.gz
 *.tex
 *.out
+*.vscode
+lab1/UnoArduSimV2.9.2
+*.ini
+*.pio
