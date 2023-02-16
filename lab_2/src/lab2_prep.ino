@@ -3,17 +3,18 @@
 
 const byte DIVISOR = 0xA7;
 // I think this works??
-unsigned long generate_crc(int codeword)
+byte Compute_CRC8(byte *bytes, int len)
 {
-    unsigned long crc = 0;
-    for (int i = 0; i < 32; i++)
+    byte crc = 0;
+
+    while (len--)
     {
-        if ((codeword & 0x80) != 0)
+        crc ^= *bytes++;
+
+        for (int i = 0; i < 8; i++)
         {
-            codeword = codeword ^ (DIVISOR << (31 - i));
+            ((crc & 0x80) != 0) ? (crc = (byte)((crc << 1) ^ DIVISOR)) : (crc <<= 1);
         }
-        codeword <<= 1;
     }
-    crc = codeword;
     return crc;
 }
