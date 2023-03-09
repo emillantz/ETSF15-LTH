@@ -309,7 +309,7 @@ boolean l1_receive(int timeout)
 
 				return true;
 			}
-			// return false;
+			return false;
 		}
 	}
 
